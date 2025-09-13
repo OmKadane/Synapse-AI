@@ -108,7 +108,6 @@ with st.sidebar:
     st.markdown(f"**Role Description:**")
     st.info(agent_roles[selected_role_name])
     st.markdown("---")
-    # This button is now the ONLY way the chat history is cleared
     if st.button("Clear Chat History"):
         st.session_state.messages = []
         st.rerun()
@@ -126,8 +125,7 @@ if "messages" not in st.session_state:
 API_KEY = os.environ.get("GOOGLE_API_KEY")
 st.session_state.agent = MCPAgent(role=agent_role_enum, api_key=API_KEY)
 
-# Display previous messages with new, clear avatars
-# Fix 1: Using image URLs for avatars instead of emojis
+# Display avatars
 user_avatar_url = "https://img.icons8.com/ios-glyphs/90/ffffff/user-male-circle.png"
 bot_avatar_url = "https://img.icons8.com/fluency-systems-filled/96/ffffff/bot.png"
 
