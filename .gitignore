@@ -1,0 +1,23 @@
+# --- Credentials ---
+# Ignore the .env file to keep API Keys and other secretes safe.
+.env
+
+# --- Python ---
+# Ignore Python bytecode and cache folders.
+__pycache__/
+*.pyc
+
+# Ignore virtual environment folders.
+venv/
+env/
+.venv/
+.env/
+
+# --- IDE / Editor ---
+# Ignore settins folders from common editors like VS Code and PyCharm.
+.vscode/
+.idea/
+
+# --- Streamlit ---
+# Ignore Streamlit's internal configuration and cache folder.
+.streamlit/
