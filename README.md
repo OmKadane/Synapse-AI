@@ -27,7 +27,7 @@ An advanced, role-based AI chat application built with Python, Streamlit, and th
 
 ## 🖼️ App Preview
 
-![Synapse AI Demo Response](https://github.com/OmKadane/Synapse-AI/blob/main/Screenshot%202025-09-13%20175033.png)
+![Synapse AI Demo Response](https://github.com/OmKadane/Synapse-AI/blob/main/img/app_preview_response.png)
 
 ---
 
