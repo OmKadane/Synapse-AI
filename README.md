@@ -1,12 +1,12 @@
-# Synapse AI ⚡
+# Synapse AI⚡
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.30%2B-red?style=for-the-badge&logo=streamlit)
 ![Gemini API](https://img.shields.io/badge/Gemini%20API-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge)
 
-![GitHub stars](https://img.shields.io/github/stars/your-username/synapse-ai?style=for-the-badge&logo=github)
-![GitHub forks](https://img.shields.io/github/forks/your-username/synapse-ai?style=for-the-badge&logo=github)
+![GitHub stars](https://img.shields.io/github/stars/OmKadane/synapse-ai?style=for-the-badge&logo=github)
+![GitHub forks](https://img.shields.io/github/forks/OmKadane/synapse-ai?style=for-the-badge&logo=github)
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-green.svg?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
@@ -15,11 +15,11 @@ An advanced, role-based AI chat application built with Python, Streamlit, and th
 ---
 
 ## 🗺️ Table of Contents
-- [App Preview](#-app-preview)
+- [App Preview](#%EF%B8%8F-app-preview)
 - [Features](#-features)
-- [Tech Stack](#-tech-stack)
+- [Tech Stack](#%EF%B8%8F-tech-stack)
 - [Getting Started](#-getting-started)
-- [Running the Application](#-running-the-application)
+- [Running the Application](#%EF%B8%8F-running-the-application)
 - [Project Structure](#-project-structure)
 - [License](#-license)
 
@@ -27,8 +27,7 @@ An advanced, role-based AI chat application built with Python, Streamlit, and th
 
 ## 🖼️ App Preview
 
-![Synapse AI Demo](link_to_your_gif_or_screenshot.gif)
-*Create a GIF of your running app and replace the link above. You can use tools like Giphy Capture or ScreenToGif.*
+![Synapse AI Demo Response](https://ibb.co/prGCwJzX)
 
 ---
 
@@ -62,7 +61,7 @@ Follow these steps to set up and run the project on your local machine.
 #### Installation
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/synapse-ai.git](https://github.com/your-username/synapse-ai.git)
+    git clone https://github.com/OmKadane/synapse-ai.git
     cd synapse-ai
     ```
 2.  **Create a virtual environment (recommended):**
