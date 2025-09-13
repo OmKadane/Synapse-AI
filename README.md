@@ -94,13 +94,14 @@ streamlit run synapse_ai_app.py
 ## 📂 Project Structure
 
 Here is an overview of the project's file structure:
-
+```
 synapse-ai/
 ├── .env                # Stores your secret API key (ignored by Git)
 ├── .gitignore          # Specifies files for Git to ignore
 ├── README.md           # You are here!
 ├── requirements.txt    # Lists project dependencies for pip
 └── synapse-ai_app.py   # The main Streamlit application script
+```
 
 ---
 
