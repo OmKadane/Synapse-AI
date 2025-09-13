@@ -14,7 +14,7 @@ An advanced, role-based AI chat application built with Python, Streamlit, and th
 
 ---
 
-### ## 🗺️ Table of Contents
+## 🗺️ Table of Contents
 - [App Preview](#-app-preview)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
@@ -25,14 +25,14 @@ An advanced, role-based AI chat application built with Python, Streamlit, and th
 
 ---
 
-### ## 🖼️ App Preview
+## 🖼️ App Preview
 
 ![Synapse AI Demo](link_to_your_gif_or_screenshot.gif)
 *Create a GIF of your running app and replace the link above. You can use tools like Giphy Capture or ScreenToGif.*
 
 ---
 
-### ## ✨ Features
+## ✨ Features
 * **🎭 Selectable Agent Roles**: Switch between different AI personas like a Researcher, Analyzer, or Coordinator.
 * **⚡ Real-Time Streaming**: Get instant, token-by-token responses from the AI for a fluid conversational experience.
 * **📂 Sidebar Controls**: A clean, collapsible sidebar holds all controls, keeping the chat interface tidy.
@@ -43,7 +43,7 @@ An advanced, role-based AI chat application built with Python, Streamlit, and th
 
 ---
 
-### ## 🛠️ Tech Stack
+## 🛠️ Tech Stack
 * **Backend**: Python
 * **Frontend**: Streamlit
 * **AI Model**: Google Gemini Pro (via `google-generativeai`)
@@ -51,7 +51,7 @@ An advanced, role-based AI chat application built with Python, Streamlit, and th
 
 ---
 
-### ## 🚀 Getting Started
+## 🚀 Getting Started
 
 Follow these steps to set up and run the project on your local machine.
 
@@ -82,15 +82,16 @@ Follow these steps to set up and run the project on your local machine.
 
 ---
 
-### ## 🏃‍♂️ Running the Application
+## 🏃‍♂️ Running the Application
 
 Once the installation is complete, run the following command in your terminal:
 ```bash
 streamlit run synapse_ai_app.py
+```
 
 ---
 
-### ## 📂 Project Structure
+## 📂 Project Structure
 
 Here is an overview of the project's file structure:
 
@@ -103,6 +104,6 @@ synapse-ai/
 
 ---
 
-### ## 📄 License
+## 📄 License
 
 Distributed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
