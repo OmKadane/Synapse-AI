@@ -62,7 +62,7 @@ Follow these steps to set up and run the project on your local machine.
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/OmKadane/Synapse-AI.git
-    cd Synapse-Ai
+    cd Synapse-AI
     ```
 2.  **Create a virtual environment (recommended):**
     ```bash
