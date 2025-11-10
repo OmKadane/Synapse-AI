@@ -74,7 +74,7 @@ class MCPAgent:
         if GEMINI_AVAILABLE and api_key:
             try:
                 genai.configure(api_key=api_key)
-                self.model = genai.GenerativeModel('gemini-1.5-pro', generation_config=GenerationConfig(temperature=0.8))
+                self.model = genai.GenerativeModel('gemini-1.5-flash', generation_config=GenerationConfig(temperature=0.8))
             except Exception as e:
                 st.error(f"Failed to initialize the AI model. Check your API key. Error: {e}")
         
