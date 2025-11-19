@@ -1,10 +1,8 @@
 import streamlit as st
 import asyncio
-import os
 from typing import Dict, Any
 from dataclasses import dataclass
 from enum import Enum
-from dotenv import load_dotenv
 
 # --- Basic Configuration ---
 st.set_page_config(
@@ -13,9 +11,6 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="expanded"
 )
-
-# --- Load Environment Variables for API Key ---
-load_dotenv()
 
 # --- CSS Styling ---
 st.markdown("""
@@ -67,14 +62,36 @@ class AgentRole(Enum):
 class Message:
     role: str; content: str
 
+def fetch_available_models(api_key: str | None):
+    """Return Gemini models that support generateContent."""
+    if not GEMINI_AVAILABLE or not api_key:
+        return []
+    try:
+        genai.configure(api_key=api_key)
+        models = []
+        for m in genai.list_models():
+            if getattr(m, "supported_generation_methods", None) and "generateContent" in m.supported_generation_methods:
+                raw_name = m.name
+                display_name = raw_name.split("/")[-1]
+                models.append({"label": display_name, "value": raw_name})
+        return models
+    except Exception as e:
+        st.warning(f"Could not list models for this API key: {e}")
+        return []
+
+
 class MCPAgent:
-    def __init__(self, role: AgentRole, api_key: str = None):
+    def __init__(self, role: AgentRole, api_key: str = None, model_name: str = "models/gemini-2.5-flash"):
         self.role = role
+        self.model_name = model_name
         self.model = None
         if GEMINI_AVAILABLE and api_key:
             try:
                 genai.configure(api_key=api_key)
-                self.model = genai.GenerativeModel('gemini-1.5-flash', generation_config=GenerationConfig(temperature=0.8))
+                self.model = genai.GenerativeModel(
+                    model_name=self.model_name,
+                    generation_config=GenerationConfig(temperature=0.8)
+                )
             except Exception as e:
                 st.error(f"Failed to initialize the AI model. Check your API key. Error: {e}")
         
@@ -96,6 +113,39 @@ class MCPAgent:
 # --- Sidebar Controls ---
 with st.sidebar:
     st.markdown("## ⚡Synapse AI Controls")
+    api_key_placeholder = "Enter your Gemini API key..."
+    api_key_input = st.text_input(
+        "Gemini API Key",
+        type="password",
+        placeholder=api_key_placeholder,
+        value=st.session_state.get("api_key", "")
+    ).strip()
+    if api_key_input:
+        st.session_state.api_key = api_key_input
+        st.success("API key saved for this session.")
+    elif "api_key" not in st.session_state or not st.session_state.api_key:
+        st.warning("Provide a valid Gemini API key to connect to the live model.")
+    fetched_models = fetch_available_models(st.session_state.get("api_key"))
+    fallback_models = [
+        {"label": "gemini-2.5-flash", "value": "models/gemini-2.5-flash"},
+        {"label": "gemini-2.5-pro", "value": "models/gemini-2.5-pro"},
+        {"label": "gemini-2.0-flash", "value": "models/gemini-2.0-flash"},
+        {"label": "gemini-2.0-flash-lite", "value": "models/gemini-2.0-flash-lite"},
+        {"label": "gemini-1.5-flash-001", "value": "models/gemini-1.5-flash-001"},
+        {"label": "gemini-1.5-flash-8b", "value": "models/gemini-1.5-flash-8b"},
+        {"label": "gemini-1.5-pro-002", "value": "models/gemini-1.5-pro-002"},
+    ]
+    selectable_models = fetched_models or fallback_models
+    label_list = [m["label"] for m in selectable_models]
+    default_value = st.session_state.get("model_name", selectable_models[0]["value"])
+    default_label = next((m["label"] for m in selectable_models if m["value"] == default_value), label_list[0])
+    selected_label = st.selectbox(
+        "Select a Gemini Model:",
+        options=label_list,
+        index=label_list.index(default_label)
+    )
+    selected_model = next(m["value"] for m in selectable_models if m["label"] == selected_label)
+    st.session_state.model_name = selected_model
     agent_roles = {
         "RESEARCHER": "Specializes in finding, correlating, and synthesizing information.",
         "ANALYZER": "Focuses on interpreting data, identifying patterns, and generating insights.",
@@ -122,8 +172,9 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # Initialize or update the agent based on sidebar selection
-API_KEY = os.environ.get("GOOGLE_API_KEY")
-st.session_state.agent = MCPAgent(role=agent_role_enum, api_key=API_KEY)
+API_KEY = st.session_state.get("api_key")
+MODEL_NAME = st.session_state.get("model_name", "models/gemini-2.5-flash")
+st.session_state.agent = MCPAgent(role=agent_role_enum, api_key=API_KEY, model_name=MODEL_NAME)
 
 # Display avatars
 user_avatar_url = "https://img.icons8.com/ios-glyphs/90/ffffff/user-male-circle.png"
